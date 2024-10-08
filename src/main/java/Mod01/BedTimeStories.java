@@ -1,4 +1,4 @@
-package Mod01.com.pluralsight;
+package Mod01;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

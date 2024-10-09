@@ -53,7 +53,7 @@ public class PayRollCalculator {
 
             if (prefered_extension == true) {
 
-                if (count == 0) {jsonContent.append("[\n"); count++;}
+                if (count == 0) {jsonContent.append("[\n"); count++;} // add [ on first line
                 jsonContent.append(" { \"id\": " + employee1.getEmployeeId() + ", \"name\": \"" +  employee1.getName() + "\", \"grossPay\": " + employee1.getGrossPay() + " },\n");
 
 
@@ -62,9 +62,10 @@ public class PayRollCalculator {
             }
 
         }
-        jsonContent.delete(jsonContent.length() - 2, jsonContent.length() );
+        jsonContent.delete(jsonContent.length() - 2, jsonContent.length() ); // delete last 2 chars
         jsonContent.append("\n]");
         file_writer.write(jsonContent.toString());
+
         scanner.close();
         fileReader.close();
         file_writer.close();

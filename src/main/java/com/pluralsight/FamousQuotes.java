@@ -1,4 +1,4 @@
-package Mod01.com.pluralsight;
+package com.pluralsight;
 
 import java.util.Scanner;
 

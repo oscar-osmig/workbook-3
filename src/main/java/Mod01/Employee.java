@@ -10,7 +10,6 @@ public class Employee {
         return (int) (this.hoursWorked * this.payRate);
     }
 
-
     public Employee(String id, String name, float hoursWorked, float payRate){
         this.employeeId = id;
         this.name = name;

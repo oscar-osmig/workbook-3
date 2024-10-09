@@ -27,6 +27,7 @@ public class BedTimeStories {
         try {
             System.out.println("\n\nPlease choose a story to read: \n1. goldilocks \n2. hansel and gretel \n3. Mary had a little lamb");
             int input = scanner.nextInt();
+            scanner.close();
             switch (input) {
                 case 1:
                     read_file("goldilocks.txt");

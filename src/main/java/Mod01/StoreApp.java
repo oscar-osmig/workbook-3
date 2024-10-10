@@ -28,6 +28,7 @@ public class StoreApp {
                     find_product_by_id(scanner, getInventory());
                     break;
                 case 3:
+                    find_by_price_range(scanner, getInventory());
                     break;
                 case 4:
                     break;
@@ -40,10 +41,24 @@ public class StoreApp {
         }
 
     }
+    public static void find_by_price_range(Scanner scanner, ArrayList<Product> inventory){
+        System.out.println("\nPlease enter minimum price:");
+        float min_price = scanner.nextFloat();
+        System.out.println("\nPlease enter maximum price:");
+        float max_price = scanner.nextFloat();
+        System.out.println("\n---- product ranging between " + NumberFormat.getCurrencyInstance().format(min_price) + " - " + NumberFormat.getCurrencyInstance().format(max_price)  + " ----");
+        for(Product product : inventory) {
+            if(product.getPrice() >= min_price && product.getPrice() <= max_price) {
+                //found it!
+                System.out.println("\nid: " + product.getId() + "\nname: " + product.getName() +
+                        "\nprice: " + NumberFormat.getCurrencyInstance().format(product.getPrice()));
+            }
+        }
+    }
 
 
     public static void find_product_by_id(Scanner scanner, ArrayList<Product> inventory){
-        System.out.println("Please enter product id (note: case sensitive)\nProduct id:");
+        System.out.println("\nPlease enter product id (note: case sensitive)\nProduct id:");
         int id = scanner.nextInt();
         for(Product product : inventory) {
             if(product.getId() == id) {
@@ -53,7 +68,6 @@ public class StoreApp {
             }
         }
     }
-
 
     public static void display_all_products() throws IOException {
         ArrayList<Product> inventory = getInventory(); // makes a list type Product and assigns the return of GetInventory()
@@ -66,7 +80,6 @@ public class StoreApp {
 
         }
     }
-
 
     public static ArrayList<Product> getInventory() throws IOException { // returns a list type Product
         ArrayList<Product> inventory = new ArrayList<Product>(); // list of data type Product, list name 'inventory'

@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 public class StoreApp {
     public static Scanner scanner = new Scanner(System.in);
     private static boolean run = true;
+    private static String file_name = "inventory.csv";
 
     public static void main(String[] args)  {
 
@@ -31,6 +32,7 @@ public class StoreApp {
                     find_by_price_range(scanner, getInventory());
                     break;
                 case 4:
+                    add_new_product(scanner, getInventory());
                     break;
                 case 5:
                     break;
@@ -69,6 +71,31 @@ public class StoreApp {
         }
     }
 
+    public static void add_new_product(Scanner scanner, ArrayList<Product> inventory) throws IOException {
+
+        System.out.println("\nPlease enter the following\nProduct id:");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("\nProduct name:");
+        String name = scanner.nextLine();
+
+        System.out.println("\nProduct Price:");
+        float price = scanner.nextFloat();
+        int counter = 0;
+        BufferedWriter file_writer = new BufferedWriter(new FileWriter(file_name, true));
+        for(Product product : inventory) {
+            if(product.getId() != id) {
+                //append new product to csv file
+                if (counter == 0) {file_writer.write("\n" +id + "|" + name + "|" + price); counter++;}
+
+            }
+        }
+        scanner.close();
+        file_writer.close();
+    }
+
+
     public static void display_all_products() throws IOException {
         ArrayList<Product> inventory = getInventory(); // makes a list type Product and assigns the return of GetInventory()
         //Scanner scanner = new Scanner(System.in);
@@ -86,7 +113,7 @@ public class StoreApp {
     // this method loads product objects into inventory
     //        inventory.add(new Product(123, "phone", 333.3f)); way to add product manually
     // and its details are not shown
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("inventory.csv")); // reads lines in provided file
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file_name)); // reads lines in provided file
     //        bufferedReader.readLine();
         String input;
 

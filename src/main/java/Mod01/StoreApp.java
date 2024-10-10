@@ -99,7 +99,7 @@ public class StoreApp {
     public static void display_all_products() throws IOException {
         ArrayList<Product> inventory = getInventory(); // makes a list type Product and assigns the return of GetInventory()
         //Scanner scanner = new Scanner(System.in);
-        System.out.println("We carry the following inventory: ");
+        System.out.println("\nWe carry the following inventory:\n");
         for (int i = 0; i < inventory.size(); i++) {
             Product p = inventory.get(i);
             System.out.printf("id: %d %s - Price: $%.2f \n",

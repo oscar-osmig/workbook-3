@@ -1,6 +1,6 @@
 <h1>Osmig Torres</h1>
 
-Phone: (510) 931- 3474
+Phone: (510) 938- 3478
 
 I enjoy learning programming concepts and doing apps.  
 Currently learning `Java` and `SQL` for backend.
